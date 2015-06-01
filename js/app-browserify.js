@@ -22,7 +22,7 @@ require("babel/register")
 // new Router()
 // }
 var pullProf = (name) => fetch('https://api.github.com/users/' + name).then((data) => data.json())
-var pullRepos = (name) => fetch(`https://api.github.com/users/${name}/repos`).then((data) => data.json())
+var pullRepos = (name) => fetch(`https://api.github.com/users/${name}/repos`).then((data) => data.json().then((data) => Array.prototype.slice.call(data)))
 var profElements = ['name', 'location', 'login', 'html_url', 'email', 'blog']
 // var profile = (obj) => profElements.reduce((a, v, i) => a[v] = obj[v], {})
 var repoArr = (arr) => arr.map((repo) => repo.name)
