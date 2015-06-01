@@ -41,9 +41,9 @@ var makeProf = (name) => pullProf(name).then((data) => addItems(formatProf(data)
 var makeRepos = (name) => pullRepos(name).then((data) => addItems(formatUl(repoArr(data))))
     // var makeRepos = (name) => pullRepos(name).then((data) => document.query
 
-function makeGit (name) {
+function githubClient(name) {
 	makeProf(name)
 	makeRepos(name)
 }
 
-makeGit('APartingGlass')
+githubClient('APartingGlass')
