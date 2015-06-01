@@ -24,7 +24,7 @@ require("babel/register")
 var pullProf = (name) => fetch('https://api.github.com/users/' + name).then((data) => data.json())
 var pullRepos = (name) => fetch(`https://api.github.com/users/${name}/repos`).then((data) => data.json())
 var profElements = ['name', 'location', 'login', 'html_url', 'email', 'blog']
-var profile = (obj) => profElements.reduce((a, v, i) => a[v] = obj[v], {})
+// var profile = (obj) => profElements.reduce((a, v, i) => a[v] = obj[v], {})
 var repoArr = (arr) => arr.map((repo) => repo.name)
 var formatLi = (name) => `<li>${name}</li>`
 var formatUl = (arr) => arr.map(formatLi(v)).reduce((a, v, i) => i < arr.length ? (a + v) : (a + v) + '</ul>', '<ul class="repos">')
@@ -36,7 +36,7 @@ html_url: ${prof.html_url}
 email: ${prof.email}
 blog: ${prof.blog}<pre><div>`
 
-var profPipe = [pullProf, profile, formatProf]
+var profPipe = [pullProf, formatProf]
 var repoPipe = [pullRepos, repoArr, formatUl]
 
 var GithubClient = (name) => "<div class='profile'>"+ profPipe.reduce((a,v,i) => v(a), name) + repoPipe.reduce((a,v,i) => v(a), name) + "</div>"
