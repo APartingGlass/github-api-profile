@@ -88,7 +88,18 @@ img {
 /**
  * YOUR CODE HERE
  */
-
+.container {
+    margin: auto;
+    .profile {
+        position:relative;
+        float: left;
+        img {
+            postion: absolute;
+            top:0;
+            left:0;
+        }
+    }
+}
 
 
 

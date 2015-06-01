@@ -27,14 +27,14 @@ var pullRepos = (name) => fetch(`https://api.github.com/users/${name}/repos`).th
     // var profile = (obj) => profElements.reduce((a, v, i) => a[v] = obj[v], {})
 var repoArr = (arr) => arr.map((repo) => repo.name)
 var formatLi = (name) => `<li>${name}</li>`
-var formatUl = (arr) => arr.map((v) => formatLi(v)).reduce((a, v, i) => i < arr.length ? (a + v) : (a + v) + '</ul>', '<ul class="repos">')
+var formatUl = (arr) => arr.map((v) => formatLi(v)).reduce((a, v, i) => i < arr.length ? (a + v) : (a + v) + '</ul></div>', '<ul class="repos">')
 var formatProf = (prof) =>
-    `<div class ="info"><pre>name: ${prof.name}	<img src="${prof.avatar_url}" height="42" width="42">
+`<div class="profile"><pre>name: ${prof.name}	<img src="${prof.avatar_url}" height="42" width="42">
 location: ${prof.location}
 login: ${prof.login}
 html_url: ${prof.html_url}
 email: ${prof.email}
-blog: ${prof.blog}<pre><div>`
+blog: ${prof.blog}<pre>`
 
 var addItems = (item) => document.querySelector('.container').insertAdjacentHTML('beforeend', item)
 var makeProf = (name) => pullProf(name).then((data) => addItems(formatProf(data)))
@@ -42,8 +42,9 @@ var makeRepos = (name) => pullRepos(name).then((data) => addItems(formatUl(repoA
     // var makeRepos = (name) => pullRepos(name).then((data) => document.query
 
 function githubClient(name) {
-	makeProf(name)
-	makeRepos(name)
+    makeProf(name)
+    makeRepos(name)
 }
 
 githubClient('APartingGlass')
+githubClient('matthiasak')
