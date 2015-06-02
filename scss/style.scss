@@ -89,14 +89,17 @@ img {
  * YOUR CODE HERE
  */
 .container {
-    margin: auto;
     .profile {
-        position:relative;
-        float: left;
         img {
-            postion: absolute;
-            top:0;
-            left:0;
+            float: left;
+            max-width: 200px;
+            max-height: 400px;
+        }
+        .info {
+            float: left;
+        }
+        .repos {
+            float: right;
         }
     }
 }
