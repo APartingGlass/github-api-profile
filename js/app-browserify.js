@@ -79,7 +79,7 @@ var GithubRouter = Backbone.Router.extend({
         fetchGit(user)
     },
     defaultProfile: function() {
-        fetchGit('APartingGlass')
+        fetchGit('MichaelZC')
     },
     initialize: function() {
         Backbone.history.start()
